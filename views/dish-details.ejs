@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Dish Details</h1>
+    <p>Name: <%= dishes.name %></p>
+    <p>Description: <%= dishes.description %></p>
+    <p>ID: <%= dishes._id %></p>
+    <p>Price: <%= dishes.price %></p>
+    <p>Category: <%= dishes.category %></p>
+    <p>Calories: <%= dishes.calories %></p>
+    <p>Status: <%= dishes.suggestStatus %></p>
+    <p>Last Update: <%= dishes.updatedAt %></p>
+
+    <form action="/dishes/<%= dishes._id %>/?_method=DELETE" method="post">
+        <button>Delete dish</button>
+    </form>
+
+
+    <form action="/dishes/<%= dishes._id %>/edit" method="get">
+    <button type="submit">Edit dish</button>
+    </form>
+</body>
+</html>

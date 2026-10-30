@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <%- include('./partials/navbar') %>
+
+         <h1>Suggest a new dish</h1>
+
+    <form action ="/dishes/" method="post">
+        <label for="dishName">Name:</label>
+        <input name="name" id="name" type="text">
+
+        <label for="price">Price:</label>
+        <input name="price" id="price" type="text">
+
+        <p>Select a category of that dish:</p>
+
+        <input type="radio" id="sushi" name="category" value="sushi">
+        <label for="sushi">Sushi</label><br>
+        <input type="radio" id="noodle-soup" name="category" value="noodle-soup">
+        <label for="ramen">Noodle soups</label><br>
+        <input type="radio" id="soup" name="category" value="soup">
+        <label for="soup">Soup</label><br>
+        <input type="radio" id="bowl" name="category" value="bowl">
+        <label for="bowl">Rice bowl</label><br>
+        <input type="radio" id="yaki" name="category" value="yaki">
+        <label for="yaki">Yaki / grilled dish</label><br>
+        <input type="radio" id="tamago" name="category" value="tamago">
+        <label for="tamago">Omlette / egg-based dish</label><br>
+        <input type="radio" id="bento" name="category" value="bento">
+        <label for="bento">Bento</label><br>
+        <input type="radio" id="seafood" name="category" value="seafood">
+        <label for="seafood">Seafood</label><br>
+        <input type="radio" id="other" name="category" value="other">
+        <label for="tamago">Other</label><br>
+        </form>
+
+        <label for="calories">Estimated calories:</label>
+        <input name="calories" id="calories" type="text">
+
+        <button type="submit">Suggest Dish</button>
+    </form>
+</body>
+</html>
