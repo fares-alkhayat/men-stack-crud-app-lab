@@ -7,7 +7,7 @@ const methodOverride = require('method-override')
 const morgan = require('morgan')
 
 
-const Food = require('./models/food')
+const Food = require('./models/Food')
 
 // Middleware
 app.use(express.static('public')); //all static files are in the public folder
@@ -65,7 +65,7 @@ app.get('/add-dish',(req,res)=>{
 app.post('/dishes', async (req,res)=>{
     console.log(req.body)
 
-// This creates a new fruit in the database with the information from the request body
+// This creates a new food in the database with the information from the request body
     const createdDish = await Food.create({ 
         name: req.body.name,
         description: req.body.description,
@@ -76,7 +76,7 @@ app.post('/dishes', async (req,res)=>{
         
     })
 
-    res.redirect('/') // Redirect the user to homepage after fruit is created
+    res.redirect('/') // Redirect the user to homepage after food is created
 })
 
 
@@ -101,7 +101,7 @@ app.delete('/dishes/:dishesId', async (req,res)=>{
 
 
 app.get('/dishes/:dishesId/edit', async (req,res)=>{
-    const foundDish = await Food.findById(req.params.dishId)
+    const foundDish = await Food.findById(req.params.dishesId)
     res.render('edit-dish.ejs',{Food: foundDish})
 })
 
@@ -109,8 +109,9 @@ app.put('/dishes/:dishesId', async (req,res)=>{
 
     const updatedDish = await Food.findByIdAndUpdate(req.params.dishesId, req.body)
     
-    res.redirect('/dishes')
+    res.redirect('/dishes',{Food: updatedDish})
 })
+
 // server.js
 
 

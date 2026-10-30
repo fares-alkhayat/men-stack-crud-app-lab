@@ -8,17 +8,17 @@
 <body>
      <%- include('./partials/navbar') %>
 
-         <h1>Suggest a new dish</h1>
+         <h1>Edit an existing dish</h1>
 
-    <form action="/dishes/<%=Food._id %>?_method=PUT" method="post">
+    <form action="dishes/<%=Food._id %>?_method=PUT" method="get">
         <label for="name">Name:</label>
-        <input name="name" id="name" type="text">
+        <input value="<%=Food.name %>" name="name" id="name" type="text">
 
         <label for="price">Price:</label>
-        <input name="price" id="price" type="text">
+        <input value="<%=Food.price %>" name="price" id="price" type="text">
 
         <label for="description">Description:</label>
-        <input name="description" id="description" type="text">
+        <input value="<%=Food.description %>" name="description" id="description" type="text">
 
         <p>Select a category of that dish:</p>
 
@@ -43,9 +43,9 @@
         </form>
 
         <label for="calories">Estimated calories:</label>
-        <input name="calories" id="calories" type="text">
+        <input value="<%=Food.calories %>" name="calories" id="calories" type="text">
 
-        <button type="submit">Update Dish</button>
+        <button action="dishes/<%=Food._id %>?_method=PUT" method="get" type="submit">Update Dish</button>
     </form>
 </body>
 </html>
