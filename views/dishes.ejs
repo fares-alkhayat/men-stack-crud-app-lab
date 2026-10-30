@@ -9,7 +9,7 @@
         <%- include('./partials/navbar') %>
     <h1>List of All Dishes</h1>
 
-    <% for (let oneFood of dishes){ %>
+    <% for (let oneFood of Food){ %>
         <p>Name: <%= oneFood.name %></p>
         <a href="/dishes/<%= oneFood._id%>">See Dish Information</a>
     <% } %>

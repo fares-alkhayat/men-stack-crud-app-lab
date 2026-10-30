@@ -32,22 +32,6 @@ conntectToDB()
 
 
 // Create route
-app.post('/dishes',async (req,res)=>{
-    req.body.suggestStatus = req.body.suggestStatus == "Under Review"
-    console.log(req.body)
-
-    const foodCreated = await Food.create({
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        category: req.body.category,
-        Calories: req.body.calories,
-        suggestStatus: "Under Review"
-    })
-    
-    res.redirect('/dishes')
-
-})
 
 async function createFood(){
     const newFood = await Food.create({
@@ -64,55 +48,69 @@ async function createFood(){
 // createFood()
 
 // Routes go here
-app.get('/',(req,res)=>{
+
+app.get('/', (req,res)=>{
     res.render('home.ejs')
 })
 
-app.get('/dishes',async (req,res)=>{
-    const dishes = await Food.find()
-    res.render('dishes.ejs',{dishes: dishes})
-})
 
-app.get('/dishes/:dishesId', async (req,res)=>{
-    console.log(req.params.dishesId)
-    const foundDish = await Food.findById(req.params.dishesId)
-    console.log(foundDish)
-    res.render('dish-details.ejs', {dishes: foundDish})
-})
+// CRUD
 
+// CREATE
 app.get('/add-dish',(req,res)=>{
     res.render('add-dish.ejs')
 })
 
-app.put('/dishes/:dishesId', async (req,res)=>{
-    const updatedDish = await dishes.findByIdAndUpdate(req.params.dishesId, req.body)})
 
-app.delete('/dishes/:dishesId', async (req,res)=>{
-    console.log('Delete dish')
-    const deleteDish = await dishes.findByIdAndDelete(req.params.dishesId)
-    res.redirect('/dishes')
-})
-
-app.post('/dishes/add-dish', async (req,res)=>{
+app.post('/dishes', async (req,res)=>{
     console.log(req.body)
 
-    const createdFood = await Food.create({
+// This creates a new fruit in the database with the information from the request body
+    const createdDish = await Food.create({ 
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
         category: req.body.category,
+        rating: req.body.rating,
         calories: req.body.calories,
-        suggestStatus: "Under Review"
+        
     })
 
-    res.redirect('/')
+    res.redirect('/') // Redirect the user to homepage after fruit is created
 })
 
-app.get('dishes/:dishesId/edit', async (req,res)=>{
-    const foundDish = await dishes.findById(req.params.dishesId)
-    res.render('edit-dish.ejs',{dishes: foundDish})
+
+// READ
+app.get('/dishes', async (req,res)=>{
+    const allDishes = await Food.find()
+    console.log(allDishes)
+    res.render('dishes.ejs', {Food: allDishes})
+})
+  
+
+app.get('/dishes/:dishesId', async (req,res)=>{
+    const foundDish = await Food.findById(req.params.dishesId) // Gets the one dish by its id
+    res.render('dish-details.ejs',{Food: foundDish})
 })
 
+
+app.delete('/dishes/:dishesId', async (req,res)=>{
+    await Food.findByIdAndDelete(req.params.dishesId)
+    res.redirect('/dishes')
+})
+
+
+app.get('/dishes/:dishesId/edit', async (req,res)=>{
+    const foundDish = await Food.findById(req.params.dishId)
+    res.render('edit-dish.ejs',{Food: foundDish})
+})
+
+app.put('/dishes/:dishesId', async (req,res)=>{
+
+    const updatedDish = await Food.findByIdAndUpdate(req.params.dishesId, req.body)
+    
+    res.redirect('/dishes')
+})
 // server.js
 
 

@@ -7,21 +7,21 @@
 </head>
 <body>
     <h1>Dish Details</h1>
-    <p>Name: <%= dishes.name %></p>
-    <p>Description: <%= dishes.description %></p>
-    <p>ID: <%= dishes._id %></p>
-    <p>Price: <%= dishes.price %></p>
-    <p>Category: <%= dishes.category %></p>
-    <p>Calories: <%= dishes.calories %></p>
-    <p>Status: <%= dishes.suggestStatus %></p>
-    <p>Last Update: <%= dishes.updatedAt %></p>
+    <p>Name: <%= Food.name %></p>
+    <p>Description: <%= Food.description %></p>
+    <p>ID: <%= Food._id %></p>
+    <p>Price: <%= Food.price %></p>
+    <p>Category: <%= Food.category %></p>
+    <p>Calories: <%= Food.calories %></p>
+    <p>Status: <%= Food.suggestStatus %></p>
+    <p>Last Update: <%= Food.updatedAt %></p>
 
-    <form action="/dishes/<%= dishes._id %>/?_method=DELETE" method="post">
+    <form action="/dishes/<%= Food._id %>/?_method=DELETE" method="post">
         <button>Delete dish</button>
     </form>
 
 
-    <form action="/dishes/<%= dishes._id %>/edit" method="get">
+    <form action="/dishes/<%= Food._id %>/edit" method="get">
     <button type="submit">Edit dish</button>
     </form>
 </body>
