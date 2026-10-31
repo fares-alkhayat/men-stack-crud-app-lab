@@ -10,7 +10,7 @@
 
          <h1>Edit an existing dish</h1>
 
-    <form action="dishes/<%=Food._id %>?_method=PUT" method="get">
+    <form action="/dishes/<%=Food._id %>?_method=PUT" method="post">
         <label for="name">Name:</label>
         <input value="<%=Food.name %>" name="name" id="name" type="text">
 
@@ -40,12 +40,11 @@
         <label for="seafood">Seafood</label><br>
         <input type="radio" id="other" name="category" value="other">
         <label for="tamago">Other</label><br>
-        </form>
 
         <label for="calories">Estimated calories:</label>
         <input value="<%=Food.calories %>" name="calories" id="calories" type="text">
 
-        <button action="dishes/<%=Food._id %>?_method=PUT" method="get" type="submit">Update Dish</button>
+        <button>Update Dish</button>
     </form>
 </body>
 </html>

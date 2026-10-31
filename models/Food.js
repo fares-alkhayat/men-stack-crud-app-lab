@@ -7,7 +7,6 @@ const foodSchema = new mongoose.Schema({
   category: { type: String, required: true },
   rating: { type: Number },
   calories: { type: Number, required: true },
-  suggestStatus: { type: String },
 },{timestamps:true})
 
 const Food = mongoose.model('Food', foodSchema)

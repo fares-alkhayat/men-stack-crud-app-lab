@@ -10,7 +10,7 @@
 
          <h1>Suggest a new dish</h1>
 
-    <form action ="/dishes" method="post">
+    <form method="POST" action="/dishes">
         <label for="name">Name:</label>
         <input name="name" id="name" type="text">
 
@@ -40,12 +40,10 @@
         <label for="seafood">Seafood</label><br>
         <input type="radio" id="other" name="category" value="other">
         <label for="tamago">Other</label><br>
-        </form>
-
         <label for="calories">Estimated calories:</label>
         <input name="calories" id="calories" type="text">
 
-        <button type="submit">Suggest Dish</button>
+        <button type="submit" id="submit" value="submit">Suggest Dish</button>
     </form>
 </body>
 </html>

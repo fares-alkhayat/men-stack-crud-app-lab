@@ -40,7 +40,6 @@ async function createFood(){
         price: 4.99,
         category: "Noodle Soup",
         calories: 550,
-        suggestStatus: "For Sale",
         rating: 10,
     })
 }
@@ -109,7 +108,7 @@ app.put('/dishes/:dishesId', async (req,res)=>{
 
     const updatedDish = await Food.findByIdAndUpdate(req.params.dishesId, req.body)
     
-    res.redirect('/dishes',{Food: updatedDish})
+    res.redirect('/dishes')
 })
 
 // server.js
